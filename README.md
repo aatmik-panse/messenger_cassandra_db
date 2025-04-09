@@ -30,6 +30,7 @@ This repository includes a Docker setup to simplify the development process. All
    ```
 
 This will:
+
 - Start both FastAPI application and Cassandra containers
 - Initialize the Cassandra keyspace and tables
 - Optionally generate test data for development
@@ -38,6 +39,7 @@ This will:
 Access the API documentation at http://localhost:8000/docs
 
 To stop the application:
+
 ```
 docker-compose down
 ```
@@ -55,6 +57,56 @@ You can use these IDs for testing your API implementations. If you need to regen
 ```
 docker-compose exec app python scripts/generate_test_data.py
 ```
+
+## Viewing Test Data in Cassandra
+
+After generating test data, you can view it using the following steps:
+
+1. **Connect to the Cassandra container**:
+
+   ```
+   docker-compose exec cassandra cqlsh
+   ```
+
+2. **Switch to the messenger keyspace**:
+
+   ```
+   USE messenger;
+   ```
+
+3. **Query the tables to view data**:
+
+   View users:
+
+   ```
+   SELECT * FROM users LIMIT 10;
+   ```
+
+   View conversations:
+
+   ```
+   SELECT * FROM conversations LIMIT 10;
+   ```
+
+   View messages in a conversation:
+
+   ```
+   SELECT * FROM messages WHERE conversation_id = 1 LIMIT 20;
+   ```
+
+   View conversations for a specific user:
+
+   ```
+   SELECT * FROM conversations_by_user WHERE user_id = 1;
+   ```
+
+   View messages for a specific user:
+
+   ```
+   SELECT * FROM messages_by_user WHERE user_id = 1 LIMIT 20;
+   ```
+
+You can adjust the LIMIT values or add specific conditions to narrow down the results. The test data includes 10 users (IDs 1-10), 15 conversations, and multiple messages per conversation.
 
 ## Manual Setup (Alternative)
 
@@ -90,6 +142,7 @@ For this assignment, you will need to design and implement your own data model i
 4. Retrieving messages before a specific timestamp
 
 Your data model should consider:
+
 - Efficient distribution of data across nodes
 - Appropriate partition keys and clustering columns
 - How to handle pagination efficiently
@@ -128,4 +181,4 @@ You need to implement:
 - Code quality and organization
 - Proper implementation of pagination
 - Performance considerations for distributed systems
-- Adherence to Cassandra data modeling best practices 
+- Adherence to Cassandra data modeling best practices
