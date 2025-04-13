@@ -44,6 +44,16 @@ To stop the application:
 docker-compose down
 ```
 
+### Database Setup
+
+If the database setup didn't run automatically during initialization, you can manually set up the database schema by running:
+
+```
+docker compose exec app python scripts/setup_db.py
+```
+
+This command initializes the Cassandra keyspace and creates all required tables for the messenger application.
+
 ### Test Data
 
 The setup script includes an option to generate test data for development purposes. This will create:
