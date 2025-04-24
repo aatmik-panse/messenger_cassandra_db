@@ -182,13 +182,3 @@ You need to implement:
 
 - `GET /api/conversations/user/{user_id}`: Get all conversations for a user
 - `GET /api/conversations/{conversation_id}`: Get a specific conversation
-
-## Evaluation Criteria
-
-- Correct implementation of all required endpoints
-- Proper error handling and edge cases
-- Efficient Cassandra queries (avoid hotspots and ensure good distribution)
-- Code quality and organization
-- Proper implementation of pagination
-- Performance considerations for distributed systems
-- Adherence to Cassandra data modeling best practices
