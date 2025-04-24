@@ -158,17 +158,6 @@ Your data model should consider:
 - How to handle pagination efficiently
 - How to optimize for the required query patterns
 
-## Assignment Tasks
-
-You need to implement:
-
-1. Cassandra schema design - create tables to support the required queries
-2. Message and Conversation models (`app/models/`) to interact with Cassandra
-3. Controller methods in the stub classes (`app/controllers/`):
-   - Send Message from one user to another (only the DB interaction parts here. No need to implement websocket etc needed to actually deliver message to other user)
-   - Get Recent Conversations of a user (paginated)
-   - Get Messages in a particular conversation (paginated)
-   - Get Messages in a conversation prior to a specific timestamp (paginated)
 
 ## API Endpoints
 
